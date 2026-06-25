@@ -27,7 +27,7 @@ export async function sendEmailWithPdfs(
 
   const result = await transporter.sendMail({
     from: process.env.GMAIL_USER,
-    to: process.env.GMAIL_USER,
+    to: "beatrice.ledu@cjecdn.qc.ca",
     subject: `Inscription CJE — ${name} (${attachments.length} document(s))`,
     text: `Nom : ${name}\n\nDocuments reçus :\n${fileList}`,
     attachments,
