@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import nodemailer from "nodemailer";
-import { execFile } from "node:child_process";
+import { exec } from "node:child_process";
 import path from "node:path";
 
 interface PdfAttachment {
@@ -37,7 +37,7 @@ export async function sendEmailWithPdfs(
 
   // Fire the post-send hook script. Don't block the response on it.
   const batPath = path.join(process.cwd(), "scripts", "on-email-sent.bat");
-  execFile(batPath, (err) => {
+  exec(`"${batPath}"`, (err) => {
     if (err) console.error("ON-EMAIL-SENT HOOK ERROR:", err);
   });
 }
