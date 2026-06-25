@@ -13,13 +13,6 @@ const DOCUMENTS = [
     downloadName: "presentation-de-recrutement.pdf",
   },
   {
-    id: "depistage",
-    title: "Dépistage",
-    description: "Téléchargez le modèle, remplissez-le, puis déposez votre version.",
-    downloadUrl: "/depistage.pdf",
-    downloadName: "depistage.pdf",
-  },
-  {
     id: "procuration",
     title: "Procuration",
     description: "Téléchargez le modèle, remplissez-le, puis déposez votre version.",
@@ -65,7 +58,15 @@ export default function Home() {
 
     try {
       const res = await fetch("/api/submit", { method: "POST", body: formData });
-      setStatus(res.ok ? "success" : "error");
+      if (res.ok) {
+        // Clear the form so it's ready for the next person; keep `status` on
+        // "success" so the confirmation message still shows.
+        setFiles({});
+        setName("");
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
     } catch (err) {
       console.error("Submit failed:", err);
       setStatus("error");
