@@ -6,18 +6,25 @@ import DocumentCard from "./components/DocumentCard";
 // `id` doubles as the FormData field name the API reads back.
 const DOCUMENTS = [
   {
-    id: "recruitment",
-    title: "Présentation de Recrutement",
+    id: "dossier",
+    title: "Dossier Volontaire Brigade Neige",
     description: "Téléchargez le modèle, remplissez-le, puis déposez votre version.",
-    downloadUrl: "/form.pdf",
-    downloadName: "presentation-de-recrutement.pdf",
+    downloadUrl: "/dossier-volontaire-brigade-neige.pdf",
+    downloadName: "dossier-volontaire-brigade-neige.pdf",
   },
   {
-    id: "procuration",
-    title: "Procuration",
+    id: "payement",
+    title: "Payement Brigade Neige",
     description: "Téléchargez le modèle, remplissez-le, puis déposez votre version.",
-    downloadUrl: "/PROCURATION.pdf",
-    downloadName: "procuration.pdf",
+    downloadUrl: "/payement-brigade-neige.pdf",
+    downloadName: "payement-brigade-neige.pdf",
+  },
+  {
+    id: "creneau-jeunesse",
+    title: "Creneau Jeunesse - Formulaire d'inscription",
+    description: "Téléchargez le modèle, remplissez-le, puis déposez votre version.",
+    downloadUrl: "/Creneau%20Jeunesse%20-%20Formulaire%20d'inscription%20(fillable).pdf",
+    downloadName: "creneau-jeunesse-formulaire-inscription.pdf",
   },
 ] as const;
 

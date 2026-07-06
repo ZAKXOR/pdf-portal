@@ -16,4 +16,8 @@ if not exist "%DOWNLOAD_DIR%" exit /b 0
 
 del /q "%DOWNLOAD_DIR%\*.pdf" 2>nul
 echo Cleared PDFs in %DOWNLOAD_DIR%
+
+REM Clear Firefox's download history list (the downloads panel entries).
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0clear-firefox-downloads.ps1"
+
 exit /b 0
