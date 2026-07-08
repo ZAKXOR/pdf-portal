@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback } from 'react';
 
 export interface DocumentCardProps {
   /** Heading shown at the top of the card. */
@@ -41,7 +41,7 @@ export default function DocumentCard({
   description,
   downloadUrl,
   downloadName,
-  accept = "application/pdf",
+  accept = 'application/pdf',
   file = null,
   onUpload,
   onRemove,
@@ -54,7 +54,7 @@ export default function DocumentCard({
       if (!selected) return;
       onUpload?.(selected);
     },
-    [onUpload]
+    [onUpload],
   );
 
   const onDrop = useCallback(
@@ -63,19 +63,19 @@ export default function DocumentCard({
       setIsDragging(false);
       handleFile(e.dataTransfer.files?.[0]);
     },
-    [handleFile]
+    [handleFile],
   );
 
   return (
     <section
-      className={`flex w-full max-w-md flex-col rounded-2xl border bg-white p-6 shadow-xl shadow-slate-900/5 ring-1 transition-colors dark:bg-slate-900 dark:shadow-black/30 ${
+      className={`flex w-full max-w-md flex-col rounded-2xl border bg-white p-6 shadow-xl shadow-slate-900/5 ring-1 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-900/10 dark:bg-slate-900 dark:shadow-black/30 ${
         file
-          ? "border-emerald-300 ring-emerald-500/20 dark:border-emerald-700/60"
-          : "border-slate-200 ring-slate-900/5 dark:border-slate-800"
+          ? 'border-emerald-300 ring-emerald-500/20 dark:border-emerald-700/60'
+          : 'border-slate-200 ring-slate-900/5 dark:border-slate-800'
       }`}
     >
       <div className="flex items-start gap-3">
-        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-500/10 text-red-600 dark:text-red-400">
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-red-500/15 to-orange-500/10 text-red-600 ring-1 ring-red-500/20 dark:text-red-400">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -115,9 +115,7 @@ export default function DocumentCard({
             )}
           </div>
           {description && (
-            <p className="text-sm text-slate-500 dark:text-slate-400">
-              {description}
-            </p>
+            <p className="text-sm text-slate-500 dark:text-slate-400">{description}</p>
           )}
         </div>
       </div>
@@ -126,7 +124,7 @@ export default function DocumentCard({
       <a
         href={downloadUrl}
         download={downloadName}
-        className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
+        className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -167,9 +165,7 @@ export default function DocumentCard({
             <p className="truncate text-sm font-medium text-slate-800 dark:text-slate-100">
               {file.name}
             </p>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
-              {formatSize(file.size)}
-            </p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">{formatSize(file.size)}</p>
           </div>
           <button
             type="button"
@@ -197,7 +193,7 @@ export default function DocumentCard({
           tabIndex={0}
           onClick={() => inputRef.current?.click()}
           onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
+            if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
               inputRef.current?.click();
             }
@@ -210,8 +206,8 @@ export default function DocumentCard({
           onDrop={onDrop}
           className={`mt-4 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed px-4 py-8 text-center transition focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 ${
             isDragging
-              ? "border-slate-900 bg-slate-50 dark:border-white dark:bg-slate-800"
-              : "border-slate-300 hover:border-slate-400 dark:border-slate-700 dark:hover:border-slate-600"
+              ? 'border-slate-900 bg-slate-50 dark:border-white dark:bg-slate-800'
+              : 'border-slate-300 hover:border-slate-400 dark:border-slate-700 dark:hover:border-slate-600'
           }`}
         >
           <svg
@@ -231,7 +227,7 @@ export default function DocumentCard({
           <p className="text-sm text-slate-500 dark:text-slate-400">
             <span className="font-medium text-slate-700 dark:text-slate-200">
               Cliquez pour téléverser
-            </span>{" "}
+            </span>{' '}
             ou glissez-déposez votre PDF rempli
           </p>
         </div>
@@ -245,7 +241,7 @@ export default function DocumentCard({
         onChange={(e) => {
           handleFile(e.target.files?.[0]);
           // Allow re-selecting the same file after a remove.
-          e.target.value = "";
+          e.target.value = '';
         }}
       />
     </section>
