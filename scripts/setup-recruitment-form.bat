@@ -21,17 +21,8 @@ REM --- 3. Remember the path so on-email-sent.bat can clear it later ---
 REM --- 4. Point Firefox's default download folder at it ---
 powershell -NoProfile -ExecutionPolicy Bypass -File "%SCRIPT_DIR%set-firefox-download.ps1" -DownloadDir "%DOWNLOAD_DIR%"
 
-REM --- 5. Pull latest changes, install dependencies, then boot the dev server ---
+REM --- 5. Install dependencies, then boot the dev server ---
 pushd "%PROJECT_DIR%"
-echo.
-echo Pulling latest changes (git pull)...
-call git pull
-if errorlevel 1 (
-  echo git pull failed. Aborting.
-  popd
-  pause
-  exit /b 1
-)
 echo.
 echo Installing dependencies (npm install)...
 call npm install
